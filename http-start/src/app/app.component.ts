@@ -69,7 +69,6 @@ export class AppComponent {
     this.petApi.findPetsByStatus(['pending']).subscribe(
       (response) => {
         this.pendingPets = response;
-        console.log(this.pets);
         console.log(response);
       },
       (error) => console.log(error)

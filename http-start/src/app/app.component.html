@@ -15,17 +15,22 @@
   <!--</div>-->
 
   <div class="row">
-    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <div class="col-xs-12">
       <button class="btn btn-primary" (click)="getPendingPets()">Get Pending Pets</button>
       <div class="pet" *ngFor="let pet of pendingPets">
-        {{ pet.name }} ---- {{ pet.status}}
+        <div class="list-group">
+          <li
+            class="list-group-item">
+            {{ pet.name }} ---- {{ pet.status}}
+          </li>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <div class="col-xs-12">
       <div class="btn-group" appDropdown>
         <button
           type="button"
@@ -40,10 +45,13 @@
   </div>
 
   <div class="row">
-    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <div class="pet" *ngFor="let pet of pets">
-        {{ pet.name }} ---- {{ pet.status}}
-      </div>
+      <div class="col-xs-12" *ngFor="let pet of pets">
+        <div class="list-group">
+          <li
+            class="list-group-item">
+              {{ pet.name }} ---- {{ pet.status}}
+          </li>
+        </div>
     </div>
   </div>
 </div>
