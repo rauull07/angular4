@@ -17,6 +17,7 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-primary" (click)="getPendingPets()">Get Pending Pets</button>
+      <span *ngIf="nrOfPendingPets"> &nbsp;&nbsp; Found {{ nrOfPendingPets }} Pets</span>
       <div class="pet" *ngFor="let pet of pendingPets">
         <div class="list-group">
           <li
@@ -37,6 +38,7 @@
           class="btn btn-primary dropdown-toggle">
           Get Pets By Status <span class="caret"></span>
         </button>
+        <span *ngIf="nrOfPets">&nbsp;&nbsp; Found {{ nrOfPets }} Pets</span>
         <ul class="dropdown-menu">
           <li *ngFor="let status of statuses"><a (click)="getPetByStatus(status)" style="cursor: pointer;">{{ status }}</a> </li>
         </ul>

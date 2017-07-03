@@ -26,6 +26,8 @@ export class AppComponent {
   statuses = ['available', 'pending', 'sold'];
   pets: Pet[] = [];
   pendingPets: Pet[] = [];
+  nrOfPendingPets: number;
+  nrOfPets: number;
 
   constructor(private serverService: ServerService, private petApi: PetApi) {}
 
@@ -59,6 +61,7 @@ export class AppComponent {
     this.petApi.findPetsByStatus(petStatus).subscribe(
       (response) => {
           this.pets = response;
+          this.nrOfPets = response.length;
           console.log(response);
           },
       (error) => console.log(error)
@@ -69,6 +72,7 @@ export class AppComponent {
     this.petApi.findPetsByStatus(['pending']).subscribe(
       (response) => {
         this.pendingPets = response;
+        this.nrOfPendingPets = response.length;
         console.log(response);
       },
       (error) => console.log(error)
