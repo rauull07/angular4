@@ -5,15 +5,19 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {ServerService} from './server.service';
+import {ApiModule} from './api/api.module';
+import {DropdownDirective} from './dropdown.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ApiModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

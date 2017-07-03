@@ -1,16 +1,49 @@
 <div class="container">
+  <!--<div class="row">-->
+    <!--<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">-->
+      <!--<h1>{{ appName | async }}</h1>-->
+      <!--<input type="text" #serverName>-->
+      <!--<button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>-->
+      <!--<br><br>-->
+      <!--<button class="btn btn-primary" (click)="onSave()">Save Servers</button>-->
+      <!--<button class="btn btn-primary" (click)="onGet()">Get Servers</button>-->
+      <!--<hr>-->
+      <!--<ul class="list-group" *ngFor="let server of servers">-->
+        <!--<li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <h1>{{ appName | async }}</h1>
-      <input type="text" #serverName>
-      <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
-      <br><br>
-      <button class="btn btn-primary" (click)="onSave()">Save Servers</button>
-      <button class="btn btn-primary" (click)="onGet()">Get Servers</button>
-      <hr>
-      <ul class="list-group" *ngFor="let server of servers">
-        <li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>
-      </ul>
+    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <button class="btn btn-primary" (click)="getPendingPets()">Get Pending Pets</button>
+      <div class="pet" *ngFor="let pet of pendingPets">
+        {{ pet.name }} ---- {{ pet.status}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="btn-group" appDropdown>
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle">
+          Get Pets By Status <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let status of statuses"><a (click)="getPetByStatus(status)" style="cursor: pointer;">{{ status }}</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="pet" *ngFor="let pet of pets">
+        {{ pet.name }} ---- {{ pet.status}}
+      </div>
     </div>
   </div>
 </div>

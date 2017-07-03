@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Response} from '@angular/http';
 import {ServerService} from './server.service';
+import {PetApi} from './api/api/PetApi';
+import {Pet} from './api/model/Pet';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,11 @@ export class AppComponent {
       id: this.generateId()
     }
   ];
-  constructor(private serverService: ServerService) {}
+  statuses = ['available', 'pending', 'sold'];
+  pets: Pet[] = [];
+  pendingPets: Pet[] = [];
+
+  constructor(private serverService: ServerService, private petApi: PetApi) {}
 
   onAddServer(name: string) {
     this.servers.push({
@@ -44,6 +50,30 @@ export class AppComponent {
         (servers: any[]) => this.servers = servers,
         (error) => console.log(error)
       );
+  }
+
+  getPetByStatus(status: string) {
+    const petStatus: string[] = [];
+    petStatus.push(status);
+
+    this.petApi.findPetsByStatus(petStatus).subscribe(
+      (response) => {
+          this.pets = response;
+          console.log(response);
+          },
+      (error) => console.log(error)
+    );
+  }
+
+  getPendingPets() {
+    this.petApi.findPetsByStatus(['pending']).subscribe(
+      (response) => {
+        this.pendingPets = response;
+        console.log(this.pets);
+        console.log(response);
+      },
+      (error) => console.log(error)
+    );
   }
 
   private generateId() {
