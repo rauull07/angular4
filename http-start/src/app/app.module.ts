@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {ServerService} from './server.service';
-import {ApiModule} from './api/api.module';
-import {DropdownDirective} from './dropdown.directive';
+import {  ServerService } from './server.service';
+import {ApiModule } from './api/api.module';
+import { DropdownDirective } from './dropdown.directive';
+import { BASE_PATH  } from './api/variables';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import {DropdownDirective} from './dropdown.directive';
     HttpModule,
     ApiModule
   ],
-  providers: [ServerService],
+  providers: [
+    ServerService,
+    { provide: BASE_PATH, useValue: 'http://petstore.swagger.io/v2' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

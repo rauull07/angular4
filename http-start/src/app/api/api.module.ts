@@ -21,6 +21,6 @@ export class ApiModule {
     return {
       ngModule: ApiModule,
       providers: [ {provide: Configuration, useValue: configuration}]
-    }
+    };
   }
 }
