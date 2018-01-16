@@ -10,6 +10,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
+import { authReducer } from './auth/store/auth.reducers';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.provideStore({shoppingList: shoppingListReducer})
+    StoreModule.provideStore({shoppingList: shoppingListReducer, auth: authReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
