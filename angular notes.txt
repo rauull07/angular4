@@ -207,16 +207,19 @@ Routing
 		<router-outlet></router-outlet>
 		
 	Navigate from controller
-		constructor(private router: Router) { }
+		constructor(private router: Router, private route: ActivatedRoute) { }
 
 		onLoadServers() {
 			// complex calculation
 			this.router.navigate(['/servers']);
+			
+			this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve');
 		}
 
 	Redirecting
 	 - { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' } 
 	 - Now, you only get redirected, if the full path is ''  (so only if you got NO other content in your path in this example).
+	 - { path: '**', redirectTo: '/page-not-found' } // catch all -> must be the last route
 	 
 	Guards
 	 - canActivate

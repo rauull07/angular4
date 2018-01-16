@@ -53,7 +53,7 @@ export class AppComponent {
         (error) => console.log(error)
       );
   }
-
+// PetStore
   getPetByStatus(status: string) {
     const petStatus: string[] = [];
     petStatus.push(status);
